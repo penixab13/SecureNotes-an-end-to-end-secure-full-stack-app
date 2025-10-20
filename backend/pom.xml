@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Parent Project -->
     <parent>
         <groupId>com.securenotes</groupId>
         <artifactId>secure-notes-parent</artifactId>
@@ -11,31 +10,11 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <!-- Spring Boot Starter Parent -->
-    <!-- This provides useful Maven defaults. It inherits dependency management from Spring Boot. -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.3.5</version> <!-- Use a recent, stable Spring Boot version -->
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <artifactId>backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>SecureNotes :: Backend</name>
     <description>Backend API for SecureNotes</description>
 
-    <properties>
-        <java.version>21</java.version>
-    </properties>
-
     <dependencies>
-        <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -52,15 +31,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-
-        <!-- Database Driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
-        
-        <!-- JWT Support for Authentication -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -78,16 +53,12 @@
             <version>0.12.5</version>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- Development Tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -100,6 +71,8 @@
         </dependency>
     </dependencies>
 
+    <!-- This section tells the backend module to actually USE the plugin -->
+    <!-- that is being managed by the parent POM. -->
     <build>
         <plugins>
             <plugin>
@@ -108,4 +81,6 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
+
